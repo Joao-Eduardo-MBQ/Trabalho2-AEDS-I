@@ -5,6 +5,9 @@
 #include "aluno.h"
 
 int main(void) {
+
+// --------------------  TESTE ENTIDADE ALUNO ---------- ---------- //
+{
     VetorAlunos alunos;
     Aluno a1, a2;
 
@@ -30,7 +33,10 @@ int main(void) {
 
     printf("Lista de Alunos:\n\n");
     listarA(&alunos);
+ }
 
+    printf("\n---------- Aperte enter para seguir para o teste da entidade professor!---------- \n");
+    getchar();
     printf("\nSaindo...");
 
     return 0;
