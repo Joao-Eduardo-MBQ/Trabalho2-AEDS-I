@@ -33,11 +33,15 @@ int removerA(VetorAlunos *v, int matricula){
 
     int i = buscarA(v, matricula);
 
+    if(i != -1){
+
     for(int j = i; j < v->tamanho - 1; j++){
         v->dados[j] = v->dados[j + 1];
     }
     v->tamanho--;
     return 1;
+    }
+    return 0;
 }
 
 int buscarA(const VetorAlunos *v, int matricula){
