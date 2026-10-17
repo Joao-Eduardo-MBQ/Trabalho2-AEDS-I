@@ -11,9 +11,11 @@ typedef struct {
     char email[TAM_EMAIL];
 } Professor;
 
-typedef struct {
+typedef struct NoProfessor {
     Professor dados;
     struct NoProfessor *prox;
+    struct NoProfessor *ant;
+    
 } NoProfessor;
 
 typedef struct {
