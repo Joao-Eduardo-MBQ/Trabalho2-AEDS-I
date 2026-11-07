@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "aluno.h"
-#include "professor.h"
+#include "..\include\aluno.h"
+#include "..\include\professor.h"
 
 int main(void) {
 
