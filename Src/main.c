@@ -2,6 +2,7 @@
 #include "..\include\aluno.h"
 #include "..\include\professor.h"
 #include "..\include\disciplina.h"
+#include "..\include\turma.h"
 
 int main(void) {
 
