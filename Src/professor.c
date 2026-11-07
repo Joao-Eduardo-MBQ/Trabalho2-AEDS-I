@@ -56,27 +56,27 @@ NoProfessor *buscarP(const ListaProfessores *l, int matricula){
 
 }
 
-    int removerP(ListaProfessores *l, int matricula){
+int removerP(ListaProfessores *l, int matricula){
 
-        NoProfessor *at = buscarP(l, matricula);
+    NoProfessor *at = buscarP(l, matricula);
 
-        if(at->ant){
-            at->ant->prox = at->prox;
-        }else{
-            l->inicio = at->prox;
-        }
-
-        if(at->prox){
-            at->prox->ant = at->ant;
-        }else{
-            l->fim = at->ant;
-        }
-
-        free(at);
-        l->tamanho--;
-        return 1;
-
+    if(at->ant){
+        at->ant->prox = at->prox;
+    }else{
+        l->inicio = at->prox;
     }
+
+    if(at->prox){
+        at->prox->ant = at->ant;
+    }else{
+        l->fim = at->ant;
+    }
+
+    free(at);
+    l->tamanho--;
+    return 1;
+
+}
 
 static void imprimirProfessor(const Professor *p) {
 
@@ -105,4 +105,3 @@ void liberarP(ListaProfessores *l){
     l->tamanho = 0;
 
 }
-

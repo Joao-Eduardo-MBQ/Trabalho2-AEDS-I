@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "..\include\aluno.h"
 #include "..\include\professor.h"
+#include "..\include\disciplina.h"
 
 int main(void) {
 
@@ -64,6 +65,40 @@ int main(void) {
     listarP(&professores);
 
     liberarP(&professores);
+}
+
+    printf("\n---------- Aperte enter para seguir para o teste da entidade disciplina! ---------- \n");
+    getchar();
+
+// ---------- TESTE ENTIDADE DISCIPLINA ---------- //
+{
+    ArvoreDisciplina disciplinas;
+
+    // {codigo, nome, cargaHoraria, periodo, {pre-requisitos}, qtdPreRequisitos}
+    Disciplina d1 = {10, "Algoritmos", 60, 1, {0}, 0};
+    Disciplina d2 = {20, "Estrutura de Dados", 60, 2, {10}, 1};
+    Disciplina d3 = {30, "Projeto Final", 80, 3, {10, 20}, 2};
+
+    inicializarArvore(&disciplinas);
+
+    cadastrarDisciplina(&disciplinas, d2);
+    cadastrarDisciplina(&disciplinas, d1);
+    cadastrarDisciplina(&disciplinas, d3);
+
+    printf("\nLista de Disciplinas:\n\n");
+    listarDisciplinas(disciplinas.raiz);
+
+    printf("\n");
+    consultarPreRequisitos(&disciplinas, 30);
+    consultarPreRequisitos(&disciplinas, 10);
+
+    removerDisciplina(&disciplinas, 20);
+    printf("\nDisciplina %s removida...\n\n", d2.nome);
+
+    printf("Lista de Disciplinas:\n\n");
+    listarDisciplinas(disciplinas.raiz);
+
+    liberarArvore(disciplinas.raiz);
 }
 
     printf("\nSaindo...");
