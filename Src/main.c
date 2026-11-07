@@ -100,6 +100,41 @@ int main(void) {
 
     liberarArvore(disciplinas.raiz);
 }
+     printf("\n---------- Aperte enter para seguir para o teste da entidade turma! ---------- \n");
+    getchar();
+
+// ---------- TESTE ENTIDADE TURMA ---------- //
+{
+    TurmaFila turmas;
+    // {codigo, codigoDisciplina, codigoProfessor, horario, sala, vagas}
+    Turma t1 = {101, 10, 1067, 9.30, "C103", 30};
+    Turma t2 = {105, 20, 1087, 14.30, "D205", 25};
+    Turma t3 = {205, 30, 1067, 11.00, "E301", 20};
+    Turma pesquisa, aux;
+    
+    FVaziaTurma(&turmas);
+
+    CadastrarTurma(&turmas, t1);
+    CadastrarTurma(&turmas, t2);
+    CadastrarTurma(&turmas, t3);
+
+    printf("\nLista de Turmas:\n\n");
+    ListarTurma(turmas);
+
+    pesquisa.cod = 105;
+    if(PesquisarTurma(&turmas, pesquisa) == 1) {
+        printf("\nTurma encontrada!\n");
+    } else {
+        printf("\nTurma não encontrada.\n");
+    }
+    RemoveTurma(&turmas, &aux);
+    printf("\nTurma %d removida...\n\n", aux.cod);
+
+    printf("Lista de Turmas:\n\n");
+    ListarTurma(turmas);
+     
+    LiberarTurma(&turmas);
+}
 
     printf("\nSaindo...");
 
