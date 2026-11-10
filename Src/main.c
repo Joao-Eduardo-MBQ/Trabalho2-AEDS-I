@@ -3,6 +3,7 @@
 #include "..\include\professor.h"
 #include "..\include\disciplina.h"
 #include "..\include\turma.h"
+#include "..\include\matricula.h"
 
 int main(void) {
 
@@ -137,6 +138,49 @@ int main(void) {
     LiberarTurma(&turmas);
 }
 
+    printf("\n---------- Aperte enter para seguir para o teste da entidade matricula! ---------- \n");
+    getchar();
+
+// ---------- TESTE ENTIDADE MATRICULA ---------- //
+{
+    PilhaMatricula matriculas;
+    Matricula m1, m2, m3, achada, removida;
+
+    // iniciarMatricula(&m, matriculaAluno, codTurma, semestre, nota, frequencia)
+    iniciarMatricula(&m1, 2528021, 101, "2025.2", 8.5f, 90.0f);
+    iniciarMatricula(&m2, 2528021, 105, "2025.2", 4.0f, 85.0f);
+    iniciarMatricula(&m3, 2419052, 205, "2024.1", 7.0f, 60.0f);
+
+    FPVaziaMatricula(&matriculas);
+
+    InserirMatricula(&matriculas, &m1);
+    InserirMatricula(&matriculas, &m2);
+    InserirMatricula(&matriculas, &m3);
+
+    printf("\nLista de Matriculas:\n\n");
+    ListarMatricula(&matriculas);
+
+    if (BuscarMatricula(&matriculas, 2528021, 105, &achada) == 1) {
+        printf("\nMatricula encontrada! Aluno %d na turma %d: %s\n", achada.matriculaAluno, achada.codTurma, achada.situacao);
+    } else {
+        printf("\nMatricula nao encontrada.\n");
+    }
+
+    if (BuscarMatricula(&matriculas, 1111111, 999, &achada) == 0) {
+        printf("Matricula 1111111 / turma 999 nao encontrada.\n");
+    }
+
+    if (RemoverMatricula(&matriculas, &removida) == 1) {
+        printf("\nMatricula do aluno %d na turma %d removida (topo)...\n\n", removida.matriculaAluno, removida.codTurma);
+    }
+
+    printf("Lista de Matriculas:\n\n");
+    ListarMatricula(&matriculas);
+
+    LiberarMatricula(&matriculas);
+}
+    printf("\n---------- Fim dos testes Precione enter para sair ---------- \n");
+    getchar();
     printf("\nSaindo...");
 
     return 0;
